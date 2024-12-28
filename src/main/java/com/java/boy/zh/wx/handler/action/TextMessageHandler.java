@@ -1,8 +1,7 @@
 package com.java.boy.zh.wx.handler.action;
 
 import com.java.boy.zh.wx.enums.ActionOrMessageType;
-import com.java.boy.zh.wx.utils.JokeUtil;
-import com.java.boy.zh.wx.utils.WeChatResultUtil;
+import com.java.boy.zh.wx.utils.ResultUtil;
 import org.springframework.stereotype.Component;
 
 import java.util.Map;
@@ -29,7 +28,7 @@ public class TextMessageHandler implements ActionHandler {
         // 笑话
 //        String joke = JokeUtil.getJoke();
 //        String response = WeChatResultUtil.buildTextResponse(toUserId, fromUserId, joke);
-        String response = "";
+        String response = ResultUtil.buildTextResponse(toUserId, fromUserId, "22222222222");
 
         return response;
     }

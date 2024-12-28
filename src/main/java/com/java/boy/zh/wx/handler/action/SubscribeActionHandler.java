@@ -1,7 +1,7 @@
 package com.java.boy.zh.wx.handler.action;
 
 import com.java.boy.zh.wx.enums.ActionOrMessageType;
-import com.java.boy.zh.wx.utils.WeChatResultUtil;
+import com.java.boy.zh.wx.utils.ResultUtil;
 import org.springframework.stereotype.Component;
 
 import java.util.Map;
@@ -28,7 +28,7 @@ public class SubscribeActionHandler implements ActionHandler {
         String fromUserId = messageMap.get("ToUserName");
 
         String content = "感谢您的关注！";
-        String response = WeChatResultUtil.buildTextResponse(toUserId, fromUserId, content);
+        String response = ResultUtil.buildTextResponse(toUserId, fromUserId, content);
 
 
         return response;

@@ -1,16 +1,12 @@
 package com.java.boy.zh.wx.utils;
 
-import com.java.boy.zh.wx.entity.WeChatResponse;
+import com.thoughtworks.xstream.XStream;
 import org.dom4j.Document;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
-import java.io.StringWriter;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.List;
@@ -23,7 +19,7 @@ import java.util.Map;
  * @Description 消息处理
  * @Version V1.0
  */
-public class MessageUtil {
+public class MessageUtil<T> {
 
     /**
      * 解析微信发来的请求（XML）.
@@ -56,26 +52,10 @@ public class MessageUtil {
         return map;
     }
 
-    public static String convertToXml(WeChatResponse response) {
-        try {
-            JAXBContext context = JAXBContext.newInstance(WeChatResponse.class);
-            Marshaller marshaller = context.createMarshaller();
-            // 设置编码格式
-            marshaller.setProperty(Marshaller.JAXB_ENCODING, "UTF-8");
-            // 格式化XML输出，设置为false则不换行
-            marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, false);
-            // 去掉生成的XML文件头部的standalone="yes"
-            marshaller.setProperty(Marshaller.JAXB_FRAGMENT, true);
-
-            StringWriter writer = new StringWriter();
-            // 添加XML头部信息
-            writer.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
-            marshaller.marshal(response, writer);
-
-            return writer.toString();
-        } catch (JAXBException e) {
-            throw new RuntimeException("转换XML失败", e);
-        }
+    public static <T> String convertToXml(T t) {
+        XStream xStream = new XStream();
+        xStream.processAnnotations(t.getClass());
+        return xStream.toXML(t);
     }
 
 }
