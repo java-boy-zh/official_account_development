@@ -47,8 +47,10 @@ public class MessageHandlerController {
 
         ActionHandler handler = actionFactory.getHandler(msgTypeKey);
         if (Objects.isNull(handler)) return null;
+        String message = handler.getMessage(msgMap);
 
-        return handler.getMessage(msgMap);
+        log.info("返回消息：message：{}", message);
+        return message;
     }
 
 }
