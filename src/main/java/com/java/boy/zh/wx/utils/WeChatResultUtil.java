@@ -1,8 +1,7 @@
 package com.java.boy.zh.wx.utils;
 
 import com.java.boy.zh.wx.entity.WeChatResponse;
-import com.java.boy.zh.wx.enums.MessageType;
-import com.sun.xml.internal.ws.util.xml.XmlUtil;
+import com.java.boy.zh.wx.enums.ActionOrMessageType;
 
 public class WeChatResultUtil {
 
@@ -11,7 +10,7 @@ public class WeChatResultUtil {
         response.setToUserName(toUser);
         response.setFromUserName(fromUser);
         response.setCreateTime(System.currentTimeMillis() / 1000);
-        response.setMsgType(MessageType.TEXT.getType());
+        response.setMsgType(ActionOrMessageType.TEXT.getAction());
         response.setContent(content);
         return MessageUtil.convertToXml(response);
     }
@@ -21,7 +20,7 @@ public class WeChatResultUtil {
         response.setToUserName(toUser);
         response.setFromUserName(fromUser);
         response.setCreateTime(System.currentTimeMillis() / 1000);
-        response.setMsgType(MessageType.IMAGE.getType());
+        response.setMsgType(ActionOrMessageType.IMAGE.getAction());
         response.setMediaId(mediaId);
         return MessageUtil.convertToXml(response);
     }
@@ -31,7 +30,7 @@ public class WeChatResultUtil {
         response.setToUserName(toUser);
         response.setFromUserName(fromUser);
         response.setCreateTime(System.currentTimeMillis() / 1000);
-        response.setMsgType(MessageType.VOICE.getType());
+        response.setMsgType(ActionOrMessageType.VOICE.getAction());
         response.setMediaId(mediaId);
         return MessageUtil.convertToXml(response);
     }
@@ -42,7 +41,7 @@ public class WeChatResultUtil {
         response.setToUserName(toUser);
         response.setFromUserName(fromUser);
         response.setCreateTime(System.currentTimeMillis() / 1000);
-        response.setMsgType(MessageType.VIDEO.getType());
+        response.setMsgType(ActionOrMessageType.VIDEO.getAction());
         response.setMediaId(mediaId);
         response.setTitle(title);
         response.setDescription(description);
@@ -54,7 +53,7 @@ public class WeChatResultUtil {
         response.setToUserName(toUser);
         response.setFromUserName(fromUser);
         response.setCreateTime(System.currentTimeMillis() / 1000);
-        response.setMsgType(MessageType.SHORTVIDEO.getType());
+        response.setMsgType(ActionOrMessageType.SHORTVIDEO.getAction());
         response.setMediaId(mediaId);
         return MessageUtil.convertToXml(response);
     }
@@ -66,7 +65,7 @@ public class WeChatResultUtil {
         response.setToUserName(toUser);
         response.setFromUserName(fromUser);
         response.setCreateTime(System.currentTimeMillis() / 1000);
-        response.setMsgType(MessageType.LOCATION.getType());
+        response.setMsgType(ActionOrMessageType.LOCATION.getAction());
         response.setLocationX(locationX);
         response.setLocationY(locationY);
         response.setScale(scale);
@@ -80,7 +79,7 @@ public class WeChatResultUtil {
         response.setToUserName(toUser);
         response.setFromUserName(fromUser);
         response.setCreateTime(System.currentTimeMillis() / 1000);
-        response.setMsgType(MessageType.LINK.getType());
+        response.setMsgType(ActionOrMessageType.LINK.getAction());
         response.setTitle(title);
         response.setDescription(description);
         response.setUrl(url);

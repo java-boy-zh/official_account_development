@@ -1,6 +1,6 @@
 package com.java.boy.zh.wx.handler.action;
 
-import com.java.boy.zh.wx.enums.ActionType;
+import com.java.boy.zh.wx.enums.ActionOrMessageType;
 import com.java.boy.zh.wx.utils.WeChatResultUtil;
 import org.springframework.stereotype.Component;
 
@@ -16,8 +16,8 @@ import java.util.Map;
 @Component
 public class SubscribeActionHandler implements ActionHandler {
     @Override
-    public ActionType getMessageType() {
-        return ActionType.SUBSCRIBE;
+    public ActionOrMessageType getMessageType() {
+        return ActionOrMessageType.SUBSCRIBE;
     }
 
     @Override

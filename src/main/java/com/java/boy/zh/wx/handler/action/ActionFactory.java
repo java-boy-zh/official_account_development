@@ -1,6 +1,6 @@
 package com.java.boy.zh.wx.handler.action;
 
-import com.java.boy.zh.wx.enums.ActionType;
+import com.java.boy.zh.wx.enums.ActionOrMessageType;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -24,9 +24,9 @@ public class ActionFactory {
     @Autowired
     public ActionFactory(List<ActionHandler> handlers) {
         for (ActionHandler handler : handlers) {
-            ActionType actionType = handler.getMessageType();
-            if (actionType != null) {
-                handlerMap.put(actionType.getAction(), handler);
+            ActionOrMessageType actionOrMessageType = handler.getMessageType();
+            if (actionOrMessageType != null) {
+                handlerMap.put(actionOrMessageType.getAction(), handler);
             }
         }
     }

@@ -48,37 +48,7 @@ public class MessageHandlerController {
         ActionHandler handler = actionFactory.getHandler(msgTypeKey);
         if (Objects.isNull(handler)) return null;
 
-        String message = handler.getMessage(msgMap);
-
-        return message;
+        return handler.getMessage(msgMap);
     }
-
-    /**
-     * <xml><ToUserName><![CDATA[gh_41e46725f5a6]]></ToUserName>
-     * <FromUserName><![CDATA[o5J_i6tWUO5gg1sIdeYAfDS8SayU]]></FromUserName>
-     * <CreateTime>1735375354</CreateTime>
-     * <MsgType><![CDATA[event]]></MsgType>
-     * <Event><![CDATA[subscribe]]></Event>
-     * <EventKey><![CDATA[]]></EventKey>
-     * </xml>
-     *
-     *<xml><ToUserName><![CDATA[gh_41e46725f5a6]]></ToUserName>
-     * <FromUserName><![CDATA[o5J_i6tWUO5gg1sIdeYAfDS8SayU]]></FromUserName>
-     * <CreateTime>1735375403</CreateTime>
-     * <MsgType><![CDATA[text]]></MsgType>
-     * <Content><![CDATA[1]]></Content>
-     * <MsgId>24844599943858766</MsgId>
-     * </xml>
-     *
-     *
-     * <xml><ToUserName><![CDATA[gh_41e46725f5a6]]></ToUserName>
-     * <FromUserName><![CDATA[o5J_i6tWUO5gg1sIdeYAfDS8SayU]]></FromUserName>
-     * <CreateTime>1735375421</CreateTime>
-     * <MsgType><![CDATA[event]]></MsgType>
-     * <Event><![CDATA[unsubscribe]]></Event>
-     * <EventKey><![CDATA[]]></EventKey>
-     * </xml>
-     *
-     */
 
 }

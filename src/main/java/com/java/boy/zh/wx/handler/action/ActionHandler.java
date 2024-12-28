@@ -1,6 +1,6 @@
 package com.java.boy.zh.wx.handler.action;
 
-import com.java.boy.zh.wx.enums.ActionType;
+import com.java.boy.zh.wx.enums.ActionOrMessageType;
 
 import java.util.Map;
 
@@ -14,7 +14,7 @@ import java.util.Map;
 public interface ActionHandler {
 
     // 消息类型
-    ActionType getMessageType();
+    ActionOrMessageType getMessageType();
 
     // 获取回复消息
     String getMessage(Map<String,String> messageMap);
