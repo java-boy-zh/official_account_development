@@ -1,9 +1,12 @@
 package com.java.boy.zh.wx.handler.action;
 
+import com.java.boy.zh.wx.constant.MessageConstant;
 import com.java.boy.zh.wx.enums.ActionOrMessageType;
+import com.java.boy.zh.wx.utils.JokeUtil;
 import com.java.boy.zh.wx.utils.ResultUtil;
 import org.springframework.stereotype.Component;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -22,13 +25,21 @@ public class TextMessageHandler implements ActionHandler {
 
     @Override
     public String getMessage(Map<String, String> messageMap) {
-        String toUserId = messageMap.get("FromUserName");
-        String fromUserId = messageMap.get("ToUserName");
+        Map<String, String> msgMap = new HashMap<>();
+        msgMap.put(MessageConstant.TOUSERNAME, messageMap.get(MessageConstant.FROMUSERNAME));
+        msgMap.put(MessageConstant.FROMUSERNAME, messageMap.get(MessageConstant.TOUSERNAME));
 
-        // 笑话
-//        String joke = JokeUtil.getJoke();
-//        String response = WeChatResultUtil.buildTextResponse(toUserId, fromUserId, joke);
-        String response = ResultUtil.buildTextResponse(toUserId, fromUserId, "22222222222");
+
+        String content = messageMap.get(MessageConstant.CONTENT);
+
+        String response = "";
+        if ("笑话".equals(content)) {
+            String joke = JokeUtil.getJoke();
+            msgMap.put(MessageConstant.CONTENT,joke);
+            response = ResultUtil.buildTextResponse(msgMap);
+        }else if ("图文".equals(content)) {
+            response = ResultUtil.buildNewsResponse(msgMap);
+        }
 
         return response;
     }

@@ -1,9 +1,11 @@
 package com.java.boy.zh.wx.handler.action;
 
+import com.java.boy.zh.wx.constant.MessageConstant;
 import com.java.boy.zh.wx.enums.ActionOrMessageType;
 import com.java.boy.zh.wx.utils.ResultUtil;
 import org.springframework.stereotype.Component;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -23,14 +25,11 @@ public class SubscribeActionHandler implements ActionHandler {
     @Override
     public String getMessage(Map<String, String> messageMap) {
 
-        // 拿到信息
-        String toUserId = messageMap.get("FromUserName");
-        String fromUserId = messageMap.get("ToUserName");
+        Map<String, String> msgMap = new HashMap<>();
+        msgMap.put(MessageConstant.TOUSERNAME, messageMap.get(MessageConstant.FROMUSERNAME));
+        msgMap.put(MessageConstant.FROMUSERNAME, messageMap.get(MessageConstant.TOUSERNAME));
+        msgMap.put(MessageConstant.CONTENT, "感谢关注本公众号！");
 
-        String content = "感谢您的关注！";
-        String response = ResultUtil.buildTextResponse(toUserId, fromUserId, content);
-
-
-        return response;
+        return ResultUtil.buildTextResponse(msgMap);
     }
 }

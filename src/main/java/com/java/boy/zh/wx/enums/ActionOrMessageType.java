@@ -16,7 +16,9 @@ public enum ActionOrMessageType {
     VIDEO("video", "视频消息"),
     SHORTVIDEO("shortvideo", "小视频消息"),
     LOCATION("location", "地理位置消息"),
-    LINK("link", "链接消息");
+    LINK("link", "链接消息"),
+    NEWS("news", "图文消息")
+    ;
 
     private final String action;
     private final String description;
