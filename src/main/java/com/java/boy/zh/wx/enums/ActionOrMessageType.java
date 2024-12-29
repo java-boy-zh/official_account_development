@@ -8,8 +8,15 @@ package com.java.boy.zh.wx.enums;
  * @Version V1.0
  */
 public enum ActionOrMessageType {
+    /*===================事件类型========================*/
+    // 关注/取消关注事件
     SUBSCRIBE("event.subscribe", "关注公众号"),
     UNSUBSCRIBE("event.unsubscribe", "取消关注公众号"),
+    // 自定义菜单事件
+    CLICK("event.CLICK", "点击菜单拉取消息时的事件推送"),
+    VIEW("event.VIEW", "点击菜单跳转链接时的事件推送"),
+
+    /*===================消息类型========================*/
     TEXT("text", "文本消息"),
     IMAGE("image", "图片消息"),
     VOICE("voice", "语音消息"),
@@ -17,8 +24,7 @@ public enum ActionOrMessageType {
     SHORTVIDEO("shortvideo", "小视频消息"),
     LOCATION("location", "地理位置消息"),
     LINK("link", "链接消息"),
-    NEWS("news", "图文消息")
-    ;
+    NEWS("news", "图文消息");
 
     private final String action;
     private final String description;
