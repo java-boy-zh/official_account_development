@@ -1,5 +1,6 @@
 package com.java.boy.zh.wx.utils;
 
+import com.alibaba.fastjson.JSON;
 import org.springframework.http.MediaType;
 
 import java.io.*;
@@ -154,5 +155,73 @@ public class HttpUtil {
             }
         }
         return result;
+    }
+
+    /**
+     * 发送POST请求,请求体为JSON格式,返回指定类型的对象
+     *
+     * @param httpUrl 请求地址
+     * @param param 请求参数对象
+     * @param responseType 返回对象类型
+     * @return 返回指定类型的对象
+     */
+    public static <T> T postJson(String httpUrl, Object param, Class<T> responseType) {
+        String jsonParam = JSON.toJSONString(param);
+        String result = doPost(httpUrl, jsonParam, MediaType.APPLICATION_JSON);
+        return JSON.parseObject(result, responseType);
+    }
+
+    /**
+     * 获取二进制数据(用于下载文件、图片等)
+     *
+     * @param httpUrl 请求地址
+     * @return 二进制数据
+     */
+    public static byte[] getBytes(String httpUrl) {
+        HttpURLConnection connection = null;
+        InputStream inputStream = null;
+        ByteArrayOutputStream outputStream = null;
+
+        try {
+            URL url = new URL(httpUrl);
+            connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestMethod("GET");
+            connection.setConnectTimeout(15000);
+            connection.setReadTimeout(60000);
+            
+            if (connection.getResponseCode() == 200) {
+                inputStream = connection.getInputStream();
+                outputStream = new ByteArrayOutputStream();
+                
+                byte[] buffer = new byte[4096];
+                int len;
+                while ((len = inputStream.read(buffer)) != -1) {
+                    outputStream.write(buffer, 0, len);
+                }
+                
+                return outputStream.toByteArray();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (outputStream != null) {
+                try {
+                    outputStream.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (inputStream != null) {
+                try {
+                    inputStream.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (connection != null) {
+                connection.disconnect();
+            }
+        }
+        return null;
     }
 }
