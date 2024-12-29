@@ -1,4 +1,4 @@
-package com.java.boy.zh.wx.entity;
+package com.java.boy.zh.wx.entity.msg;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 

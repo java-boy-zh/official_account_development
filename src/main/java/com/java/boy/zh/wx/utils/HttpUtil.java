@@ -1,5 +1,7 @@
 package com.java.boy.zh.wx.utils;
 
+import org.springframework.http.MediaType;
+
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -79,12 +81,12 @@ public class HttpUtil {
 
     /**
      * post方式的http请求
-     *
+     *MediaType.APPLICATION_FORM_URLENCODED_VALUE
      * @param httpUrl 请求地址
      * @param param   请求参数
      * @return 返回结果
      */
-    public static String doPost(String httpUrl, String param) {
+    public static String doPost(String httpUrl, String param,MediaType mediaType) {
         HttpURLConnection connection = null;
         InputStream inputStream = null;
         OutputStream outputStream = null;
@@ -103,7 +105,7 @@ public class HttpUtil {
             // 默认值为：false，当向远程服务器传送数据/写数据时，需要设置为true
             connection.setDoOutput(true);
             // 设置传入参数的格式:请求参数应该是 name1=value1&name2=value2 的形式。
-            connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+            connection.setRequestProperty("Content-Type", mediaType.getType());
             // 通过连接对象获取一个输出流
             outputStream = connection.getOutputStream();
             // 通过输出流对象将参数写出去/传输出去,它是通过字节数组写出的

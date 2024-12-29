@@ -1,8 +1,8 @@
 package com.java.boy.zh.wx.utils;
 
 import com.java.boy.zh.wx.constant.MessageConstant;
-import com.java.boy.zh.wx.entity.NewsMessage;
-import com.java.boy.zh.wx.entity.TextMessage;
+import com.java.boy.zh.wx.entity.msg.NewsMessage;
+import com.java.boy.zh.wx.entity.msg.TextMessage;
 import com.java.boy.zh.wx.enums.ActionOrMessageType;
 
 import java.util.LinkedList;
