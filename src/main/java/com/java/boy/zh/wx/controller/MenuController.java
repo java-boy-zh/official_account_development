@@ -103,8 +103,15 @@ public class MenuController {
         subButton2.setName("子菜单2");
         subButton2.setUrl("https://www.baidu.com");
 
+        // 创建子菜单3
+        Button subButton3 = new Button();
+        subButton3.setType("pic_photo_or_album");
+        subButton3.setName("发图");
+        subButton3.setKey("subButton3");
+
         subButtons.add(subButton1);
         subButtons.add(subButton2);
+        subButtons.add(subButton3);
         button3.setSub_button(subButtons);
 
         buttons.add(button1);

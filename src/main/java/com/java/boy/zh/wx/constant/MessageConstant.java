@@ -14,5 +14,6 @@ public interface MessageConstant {
     String CREATETIME = "CreateTime";
     String MSGTYPE = "MsgType";
     String CONTENT = "Content";
+    String PICURL = "PicUrl";
 
 }

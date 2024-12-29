@@ -16,6 +16,9 @@ public enum ActionOrMessageType {
     CLICK("event.CLICK", "点击菜单拉取消息时的事件推送"),
     VIEW("event.VIEW", "点击菜单跳转链接时的事件推送"),
 
+    // 自定义菜单事件
+    PIC_PHOTO_OR_ALBUM("event.pic_photo_or_album", "弹出拍照或者相册发图的事件推送"),
+
     /*===================消息类型========================*/
     TEXT("text", "文本消息"),
     IMAGE("image", "图片消息"),
